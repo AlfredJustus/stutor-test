@@ -1,0 +1,19 @@
+# Core Django and its dependencies
+Django==5.1.2
+asgiref==3.8.1
+sqlparse==0.5.1
+
+# Database
+mysqlclient==2.2.5
+
+# User authentication
+django-use-email-as-username==1.4.0
+
+# Slug generation
+django-autoslug==1.9.9
+
+# Image handling
+Pillow==11.0.0
+
+# Date handling
+python-dateutil==2.9.0.post0

@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% block title %}View Tutors{% endblock %}
+{% block content %}
+
+<section class="filter-section">   
+    <form class="filter-form" action="{% url 'users:show-tutors' school_slug=school.slug %}" method="get">            
+        <div class="filter-grid">
+            <!-- Subject -->
+            <div class="filter-group">
+                {% if form.subject %}
+                    {{ form.subject }}
+                {% endif %}
+            </div>
+
+            <!-- Tutor Language -->
+            <div class="filter-group">
+                {% if form.teaching_language %}
+                    {{ form.teaching_language }}
+                {% endif %}
+            </div>
+            
+            <!-- Grade Level -->
+            <div class="filter-group">
+                {% if form.gradeLevel %}
+                    {{ form.gradeLevel }}
+                {% endif %}
+            </div>
+
+            <!-- Max Price -->
+            <div class="filter-group">
+                {% if form.max_price %}
+                    {{ form.max_price }}
+                {% endif %}
+            </div>
+
+            <button type="submit" class="filter-submit">
+                <svg class="filter-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+                </svg>
+                Filter
+            </button>
+        </div>
+    </form>
+</section>
+
+{% if tutors %}
+    <div class="tutor-grid">
+        {% for tutor in tutors %}
+        <a class="tutor-card-link" href="{% url 'users:profile' school_slug=school.slug slug=tutor.slug %}">
+            <div class="tutor-card">
+                <img src="{{ tutor.picture.url }}" alt="{{ tutor.first_name }} {{ tutor.last_name }}" class="tutor-image">
+                <div class="tutor-content">
+                    <h2 class="tutor-name">
+                        {{ tutor.first_name }} {{ tutor.last_name }}
+                    </h2>
+                    <div class="tutor-info">
+                        <p>Student in {{ tutor.gradeLevel }}th grade</p>
+                        <div class="tutor-language">
+                            Speaks {{ tutor.teaching_language }}
+                        </div>
+                        <div class="tutor-subjects">
+                            Tutors
+                            {% if tutor.subjects.all %}
+                                {% for subject in tutor.subjects.all %}
+                                    {{ subject.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                None
+                            {% endif %}
+                        </div>
+                        <div class="tutor-price">
+                            {{ tutor.asking_price }} € per hour
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="no-tutors">
+        No tutors found matching the selected criteria.
+    </div>
+{% endif %}
+{% endblock %}

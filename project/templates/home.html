@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}stutor - Select Your School{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Select Your School</h1>
+    <form method="get" action="/">
+        <div>
+            <label for="schoolSelector">Select Your School:</label>
+            <select id="schoolSelector" name="school_slug" required>
+                <option value="">Choose your school</option>
+                {% for school in schools %}
+                    <option value="{{ school.slug }}">{{ school.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Access School</button>
+    </form>
+</div>
+{% endblock %}

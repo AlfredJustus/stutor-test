@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+            Django App
+        {%endblock%}
+    </title>
+    {%block extra_css%}
+    {%endblock%}
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/">stutor</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'custom_user:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'custom_user:login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    
+    {%block content%}
+    {% endblock %}
+    
+    {%block extra_js%}
+    {% endblock %}
+</body>
+</html>
