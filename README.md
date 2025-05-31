@@ -1,6 +1,6 @@
 # SchoolTutor Platform
 
-This project is a platform that connects tutors and students from the same school. Students who need tutoring can find their suitable tutor through filter options. Tutors can also register to support students in their offered subjects.
+This project is a platform that connects tutors and students from the same school. 
 
 ## Prerequisites
 
@@ -21,20 +21,14 @@ Before you begin, ensure you have the following installed:
 ## Getting the Project
 
 ### Option 1: Download ZIP (Easiest)
-1. Go to the GitHub repository in your web browser
+1. Go to the GitHub repository in your web browser (also possible in terminal though)
 2. Click the green "Code" button
 3. Click "Download ZIP"
 4. Extract the ZIP file to your computer
 5. Open Terminal and navigate to the extracted folder
 
 ### Option 2: Using Git (For developers)
-If you plan to make changes to the code, you'll need Git:
-1. Install Git from [Git's official website](https://git-scm.com/downloads)
-2. Open Terminal and run:
-   ```bash
-   git clone [repository-url]
-   cd [project-directory]
-   ```
+You won't need to edit anything in this file so let's not overcomplicate for now.
 
 ## Project Setup Instructions
 
@@ -105,35 +99,14 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-The application should now be running at `http://127.0.0.1:8000/`
+The application should now be running at `http://127.0.0.1:8000/`. To add tutors to the database and make them visible, head to `http://127.0.0.1:8000/admin` and log in with your superuser details. Once you filled out a tutor profile, click 'verified' to make them appear on the website. 
 
-## Common Issues and Solutions
-
-1. **Python Version Issues**
-   - If you get version-related errors, ensure you're using Python 3.12.6
-   - Check your version: `python3 --version`
-   - If needed, install the correct version from Python's website
-
-2. **MySQL Connection Issues**
-   - Ensure MySQL is running: `mysql.server status`
-   - Verify credentials in `project/project/settings.py`
-   - Check if the database exists: `mysql -u stutor -p -e "SHOW DATABASES;"`
-
-3. **Package Installation Issues**
-   - If pip install fails, try: `pip install --upgrade pip`
-   - Then: `pip install -r requirements.txt`
-
-4. **Virtual Environment Issues**
-   - If you see "command not found: python", ensure you're in the virtual environment
-   - Reactivate it: `source venv/bin/activate`
 
 ## Important Notes
 - Make sure you're using Python 3.12.6
 - Keep your secret key secure and never commit it to version control
 - The project uses MySQL as the database backend
 - Email functionality requires proper SMTP configuration in settings.py
-- If you encounter any issues, check the "Common Issues and Solutions" section above
 
 ## Need Help?
-If you encounter any issues not covered here, please:
-1. Ask chatgpt or claude
+Ask chatgpt or claude
