@@ -3,7 +3,7 @@
 Stutor is a platform that connects tutors and students from the same school. 
 
 This repository features a primitive version of stutor.de, 
-designed to understand the workings of
+designed to help you understand the workings of
 Django and the basic structure of the project.
 
 ## Prerequisites
